@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-dark: #060705;
+  --bg-surface: #0c0e0a;
+  --bg-surface-soft: #141711;
+
+  --primary: #636e4b;
+  /* Ranger Green */
+  --primary-bright: #8da460;
+  --primary-glow: rgba(99, 110, 75, 0.15);
+
+  --accent-coyote: #a68453;
+  --accent-danger: #8b3a3a;
+
+  --text-main: #b8c1ae;
+  --text-dim: #6d7663;
+  --text-bright: #e2e8da;
+
+  --border: rgba(99, 110, 75, 0.2);
+  --border-active: rgba(141, 164, 96, 0.5);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition-smooth: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --scanline: linear-gradient(to bottom,
+      transparent 50%,
+      rgba(99, 110, 75, 0.02) 50%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Tactical Grid Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+/* Scanline Effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--scanline);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-bright);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-heading);
+  transition: var(--transition-smooth);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(12, 14, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Badge style */
+.badge {
+  padding: 0.35rem 1rem;
+  border-radius: 0px;
+  /* Sharp edges for military look */
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(99, 110, 75, 0.1);
+  border: 1px solid var(--border);
+  color: var(--primary-bright);
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--primary-bright);
+  border-radius: 50%;
+}
+
+/* Tactical Corner Brackets */
+.tactical-box {
+  position: relative;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.tactical-box::before,
+.tactical-box::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--primary-bright);
+}
+
+.tactical-box::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tactical-box::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.pulsing-dot {
+  animation: pulse-dot 2s infinite;
+}
