@@ -98,7 +98,8 @@ h4 {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-bright);
+  /* Make all links bright by default */
   transition: var(--transition-smooth);
 }
 
@@ -109,6 +110,8 @@ button {
   transition: var(--transition-smooth);
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  color: var(--text-bright);
+  /* Make all buttons bright by default */
 }
 
 /* Glassmorphism utility */
@@ -124,6 +127,27 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Typography responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.8rem !important;
+  }
+
+  h3 {
+    font-size: 1.4rem !important;
+  }
 }
 
 /* Badge style */
@@ -181,6 +205,26 @@ button {
   border-top: none;
 }
 
+/* Hide on Mobile/Desktop utility */
+.show-mobile,
+.flex-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .show-mobile {
+    display: block !important;
+  }
+
+  .flex-mobile {
+    display: flex !important;
+  }
+}
+
 /* Animations */
 @keyframes pulse-dot {
   0% {
@@ -198,4 +242,186 @@ button {
 
 .pulsing-dot {
   animation: pulse-dot 2s infinite;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-dark);
+  z-index: 2000;
+  transition: var(--transition-smooth);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-link {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-bright);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+}
+
+.mobile-menu-link.active {
+  color: #ffffff;
+}
+
+.mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.mobile-submenu.open {
+  max-height: 800px;
+  opacity: 1;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-submenu-link {
+  font-size: 0.85rem;
+  color: #ffffff;
+  /* Bright white */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.5rem 0;
+  display: block;
+  opacity: 0.8;
+}
+
+.mobile-submenu-link:active {
+  color: var(--primary-bright);
+  opacity: 1;
+}
+
+/* Mobile Lang Switcher */
+.mobile-lang-switcher button {
+  transition: none;
+  /* Instant feedback for tabs */
+}
+
+/* Contact Section Styles */
+.contact-section {
+  padding: 10rem 0;
+  background: var(--bg-dark);
+  min-height: 100vh;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 4rem;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .contact-section {
+    padding: 6rem 0;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
+.contact-form-box {
+  padding: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .contact-form-box {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.contact-header h2 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-top: 1.5rem;
+}
+
+.contact-header p {
+  color: var(--text-dim);
+  max-width: 650px;
+  margin: 1.5rem auto 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contact-header {
+    margin-bottom: 3rem;
+  }
+  
+  .contact-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+
+.contact-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .contact-info-sidebar {
+    gap: 2rem;
+  }
 }

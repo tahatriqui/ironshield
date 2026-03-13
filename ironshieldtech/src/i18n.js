@@ -18,7 +18,7 @@ const resources = {
         subtitle: "IronShield Tactical • Special Ops & Security",
         title_part1: "FORGED FOR ",
         title_accent: "THE EXTREME",
-        desc: "Discover our selection of tactical armor, night vision systems, and field-tested survival gear. Uncompromising protection.",
+        desc: "Discover our range of military uniforms, bulletproof vests and ballistic helmets designed to meet the demands of operational environments. Reliable equipment, combining protection, durability and performance for uncompromising security.",
         btn_catalog: "DISCOVER CATALOG",
         btn_tech: "OUR TECHNOLOGY"
       },
@@ -46,10 +46,9 @@ const resources = {
         },
         info: {
           title: "Contact Information",
-          division: "Iron Shield Tech – Tactical Division",
-          address1: "12 Special Operations Street",
-          address2: "75000 Paris, France",
-          hours: "Mon – Fri, 9:00 AM – 6:00 PM (CET)"
+          division: "",
+          address1: "Meydan Grandstand, 6th floor, Meydan Road, Nad AI Sheba Dubai UAE",
+          address2: ""
         }
       },
       footer: {
@@ -59,8 +58,6 @@ const resources = {
         stay_ready: "STAY READY",
         newsletter: "Sign up for new arrival alerts.",
         rights: "ALL RIGHTS RESERVED.",
-        privacy: "PRIVACY POLICY",
-        legal: "LEGAL NOTICE"
       },
       specs: {
         title: "ENGINEERED EXCELLENCE",
@@ -118,7 +115,7 @@ const resources = {
         subtitle: "IronShield Tactical • Opérations Spéciales & Sécurité",
         title_part1: "FORGÉ POUR ",
         title_accent: "L'EXTRÊME",
-        desc: "Découvrez notre sélection d'armures tactiques, de systèmes de vision nocturne et d'équipements de survie testés sur le terrain. La protection sans compromis.",
+        desc: "Découvrez notre gamme de tenues militaires, de gilets pare-balles et de casques balistiques conçus pour répondre aux exigences des environnements opérationnels. Des équipements fiables, alliant protection, durabilité et performance pour une sécurité sans compromis.",
         btn_catalog: "DÉCOUVRIR LE CATALOGUE",
         btn_tech: "NOTRE TECHNOLOGIE"
       },
@@ -146,10 +143,10 @@ const resources = {
         },
         info: {
           title: "Coordonnées",
-          division: "Iron Shield Tech – Division Tactique",
-          address1: "12 Rue des Opérations Spéciales",
-          address2: "75000 Paris, France",
-          hours: "Lun – Ven, 9h00 – 18h00 (CET)"
+          division: "Meydan Grandstand, 6th floor, Meydan Road, Nad AI Sheba Dubai UAE",
+          address1: "",
+          address2: "",
+          hours: ""
         }
       },
       footer: {
@@ -159,12 +156,10 @@ const resources = {
         stay_ready: "RESTEZ PRÊTS",
         newsletter: "Inscrivez-vous pour les alertes de nouveaux arrivages.",
         rights: "TOUS DROITS RÉSERVÉS.",
-        privacy: "POLITIQUE DE CONFIDENTIALITÉ",
-        legal: "MENTIONS LÉGALES"
       },
       specs: {
         title: "EXCELLENCE INGÉNIÉRIE",
-        subtitle: "La Science de la Survie",
+        
         field_tested: {
           title: "Testé sur le Terrain",
           desc: "Chaque composant est soumis à des tests de stress environnementaux rigoureux en conditions de combat."

@@ -36,20 +36,17 @@ const Specs = () => {
   ];
 
   return (
-    <section id="tech" style={{ padding: '8rem 0', background: 'var(--bg-dark)' }}>
+    <section id="tech" style={{ padding: '8rem 0', background: 'var(--bg-dark)' }} className="responsive-section">
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <span className="badge">
-            {t('specs.subtitle')}
-          </span>
-          <h2 style={{ fontSize: '3rem', marginTop: '1.5rem', fontWeight: 800 }}>{t('specs.title')}</h2>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }} className="specs-header">
+          <h2 style={{ marginTop: '1.5rem', fontWeight: 800 }} className="specs-title">{t('specs.title')}</h2>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '3rem'
-        }}>
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', // Reduced min-width
+          gap: '2rem' // Reduced gap for mobile
+        }} className="specs-grid">
           {specsItems.map((item) => (
             <div key={item.key} className="tactical-box glass" style={{
               padding: '3.5rem 2.5rem',
@@ -66,9 +63,7 @@ const Specs = () => {
               }}>
                 {item.icon}
               </div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '0.5rem' }}>
-                MODULE_01 // SECURE
-              </div>
+             
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1.25rem', color: 'var(--text-bright)' }}>{t(`specs.${item.key}.title`)}</h3>
               <p style={{ color: 'var(--text-dim)', fontSize: '1rem', lineHeight: '1.6' }}>
                 {t(`specs.${item.key}.desc`)}
@@ -77,6 +72,14 @@ const Specs = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .specs-title { font-size: 3rem; }
+        @media (max-width: 768px) {
+          .specs-title { font-size: 2rem !important; }
+          .specs-header { marginBottom: 3rem !important; }
+          .specs-grid { gap: 1.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 };

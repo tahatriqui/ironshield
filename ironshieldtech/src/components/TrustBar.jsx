@@ -1,9 +1,7 @@
 import React from 'react';
 
 const TrustBar = () => {
-  const partners = [
-    'DEFENSE SYSTEMS', 'AERO GUARD', 'TITAN CORE', 'NEXUS TACTICAL', 'ORBITAL SECURITY'
-  ];
+ 
 
   return (
     <div style={{ 
@@ -20,20 +18,7 @@ const TrustBar = () => {
           gap: '3rem',
           opacity: 0.5
         }}>
-          {partners.map((partner, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{ width: '4px', height: '4px', background: 'var(--primary-bright)', borderRadius: '50%' }}></div>
-              <span style={{
-                fontSize: '0.8rem',
-                fontWeight: 900,
-                letterSpacing: '4px',
-                fontFamily: 'var(--font-heading)',
-                color: 'var(--text-bright)'
-              }}>
-                {partner}
-              </span>
-            </div>
-          ))}
+        
         </div>
       </div>
     </div>

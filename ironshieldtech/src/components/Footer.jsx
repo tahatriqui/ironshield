@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import logo from "../assets/Logo/logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -28,20 +29,12 @@ const Footer = () => {
               letterSpacing: '2px',
               fontFamily: 'var(--font-heading)'
             }}>
-              IRON<span style={{ color: 'var(--text-bright)' }}>SHIELD</span>
+             <img style={{width:"80px",height:"auto"}} src={logo} alt="" />
             </div>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', lineHeight: '1.7', maxWidth: '300px' }}>
               {t('footer.desc')}
             </p>
-            <div style={{ 
-              marginTop: '2rem', 
-              fontSize: '0.65rem', 
-              color: 'var(--primary)', 
-              fontFamily: 'var(--font-mono)',
-              letterSpacing: '0.2em' 
-            }}>
-              EST. 2024 // GLOBAL_DEFENSE
-            </div>
+           
           </div>
           
           <div>
@@ -51,8 +44,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.2rem', fontSize: '0.85rem' }}>
               <li><Link to="/" style={{ color: 'var(--text-main)', transition: 'var(--transition-smooth)' }}>{t('nav.home')}</Link></li>
               <li><Link to="/contact" style={{ color: 'var(--text-main)' }}>{t('nav.contact')}</Link></li>
-              <li><a href="#tech" style={{ color: 'var(--text-main)' }}>{t('nav.tech')}</a></li>
-            </ul>
+              </ul>
           </div>
 
           <div>
@@ -68,37 +60,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 style={{ fontSize: '0.75rem', marginBottom: '2rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)' }}>
-              // {t('footer.stay_ready')}
-            </h4>
-            <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-              {t('footer.newsletter')}
-            </p>
-            <div style={{ display: 'flex', position: 'relative' }}>
-              <input 
-                type="email" 
-                placeholder="OPERATOR_EMAIL"
-                style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid var(--border)',
-                  padding: '0.8rem 1rem',
-                  color: 'var(--text-bright)',
-                  fontSize: '0.75rem',
-                  width: '100%',
-                  fontFamily: 'var(--font-mono)',
-                  outline: 'none'
-                }}
-              />
-              <button style={{
-                background: 'var(--primary)',
-                color: '#fff',
-                padding: '0 1.5rem',
-                border: '1px solid var(--primary-bright)',
-                borderLeft: 'none'
-              }}>
-                <i className="ri-arrow-right-line"></i>
-              </button>
-            </div>
+            
+            
           </div>
         </div>
 
@@ -112,11 +75,7 @@ const Footer = () => {
           gap: '2rem'
         }}>
           <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', letterSpacing: '0.1em' }}>
-            © 2024 IRON SHIELD TECH / TACTICAL SOLUTIONS. {t('footer.rights')}
-          </div>
-          <div style={{ display: 'flex', gap: '2.5rem', fontSize: '0.65rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
-            <span style={{ color: 'var(--text-dim)', cursor: 'pointer' }}>{t('footer.privacy')}</span>
-            <span style={{ color: 'var(--text-dim)', cursor: 'pointer' }}>{t('footer.legal')}</span>
+            © 2026 IRON SHIELD TECHNOLOGIES. {t('footer.rights')}
           </div>
         </div>
       </div>

@@ -22,21 +22,23 @@ const ProductCard = ({ product }) => {
       flexDirection: 'column'
     }}>
       <div style={{
-        height: '240px',
+        height: '240px', // Increased from 240px
         overflow: 'hidden',
         position: 'relative',
-        background: '#080907'
+        background: '#fff', // Changed to white as shots show white bg images
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}>
         {product.image ? (
           <img
-            src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcVIwySJrMbj2NL6dQJIo_l-ndaP7tf24YOg&s"}
+            src={product?.image}
             alt={name}
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              maxWidth: '90%',
+              maxHeight: '90%',
+              objectFit: 'contain', // Changed to contain to respect product shape
               display: 'block',
-              filter: 'sepia(30%) contrast(110%)',
               transition: 'var(--transition-smooth)'
             }}
           />
@@ -58,13 +60,14 @@ const ProductCard = ({ product }) => {
         
         <div className="badge" style={{
           position: 'absolute',
-          top: '0',
-          right: '0',
+          top: '1rem',
+          right: '1rem',
           background: 'var(--primary)',
           color: '#fff',
-          fontSize: '0.6rem',
-          padding: '0.2rem 0.6rem',
-          fontFamily: 'var(--font-mono)'
+          fontSize: '0.7rem',
+          padding: '0.3rem 0.8rem',
+          fontFamily: 'var(--font-mono)',
+          zIndex: 2
         }}>
           {category}
         </div>
@@ -75,40 +78,36 @@ const ProductCard = ({ product }) => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '40px',
-          height: '40px',
-          border: '1px solid rgba(141, 164, 96, 0.2)',
+          width: '60px',
+          height: '60px',
+          border: '1px solid rgba(0, 0, 0, 0.05)',
           borderRadius: '50%',
           pointerEvents: 'none'
         }}></div>
       </div>
 
-      <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', position: 'relative' }}>
-        <div style={{ 
-          fontSize: '0.6rem', 
-          color: 'var(--primary-bright)', 
-          fontFamily: 'var(--font-mono)', 
-          marginBottom: '0.5rem',
-          opacity: 0.7
+      <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column', position: 'relative' }}>
+       
+        <h3 style={{ 
+          fontSize: '1.4rem', // Increased from 1.1rem
+          marginBottom: '1rem', 
+          color: 'var(--text-bright)', 
+          letterSpacing: '0.05em',
+          fontWeight: '800',
+          textTransform: 'uppercase'
         }}>
-          REF_ID: SN-{product.id.toString().padStart(4, '0')} // CLASS_A
-        </div>
-        
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-bright)', letterSpacing: '0.05em' }}>
           {name}
         </h3>
         
         <p style={{ 
-          fontSize: '0.9rem', 
+          fontSize: '1rem', // Increased from 0.9rem
           color: 'var(--text-dim)', 
           marginBottom: '1.5rem', 
           flex: 1,
-          lineHeight: '1.5' 
+          lineHeight: '1.6' 
         }}>
           {description}
         </p>
-        
-        
       </div>
 
       <style>{`

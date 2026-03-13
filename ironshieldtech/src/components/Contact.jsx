@@ -53,33 +53,24 @@ const Contact = () => {
   };
 
   return (
-    <section style={{ padding: '10rem 0', background: 'var(--bg-dark)', minHeight: '100vh' }}>
+    <section className="contact-section">
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <span className="badge">
-            PROTOCOL: COMMS_CHANNEL_01
-          </span>
-          <h2 style={{ fontSize: '3.5rem', marginTop: '1.5rem', fontWeight: 900, letterSpacing: '2px' }}>
+        <div className="contact-header">
+          <h2>
             {t('contact.title')}
           </h2>
-          <p style={{ color: 'var(--text-dim)', maxWidth: '650px', margin: '1.5rem auto 0 auto', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          <p>
             {t('contact.desc')}
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.8fr) minmax(0, 1fr)',
-          gap: '4rem',
-        }}>
+        <div className="contact-grid">
           {/* Tactical Form */}
-          <div className="tactical-box glass" style={{ padding: '3.5rem' }}>
-            <div style={{ fontSize: '0.65rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '2.5rem' }}>
-              // SECURE_TRANSMISSION_FORM // MK-9
-            </div>
+          <div className="tactical-box glass contact-form-box">
+          
             
             <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '2rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+              <div className="contact-form-row">
                 <div>
                   <label htmlFor="firstName" style={{ display: 'block', fontSize: '0.7rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '0.75rem' }}>
                     {t('contact.form.firstName')}
@@ -229,7 +220,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          <div className="contact-info-sidebar">
             <div className="tactical-box" style={{ background: 'rgba(99, 110, 75, 0.05)' }}>
               <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--text-bright)' }}>
                 {t('contact.info.title')}
@@ -243,22 +234,15 @@ const Contact = () => {
 
             <div className="tactical-box" style={{ borderLeftColor: 'var(--primary-bright)', borderLeftWidth: '3px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                
                 <div>
-                  <div style={{ fontSize: '0.6rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '0.4rem' }}>DIRECT_LINE</div>
-                  <p style={{ fontSize: '1.2rem', color: 'var(--text-bright)', fontWeight: 700 }}>+33 (0)1 23 45 67 89</p>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.6rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '0.4rem' }}>SECURE_EMAIL</div>
-                  <p style={{ fontSize: '1.2rem', color: 'var(--text-bright)', fontWeight: 700 }}>ops@ironshieldtech.com</p>
+                  <div style={{ fontSize: '0.6rem', color: 'var(--primary-bright)', fontFamily: 'var(--font-mono)', marginBottom: '0.4rem' }}>EMAIL</div>
+                  <p style={{ fontSize: '1.2rem', color: 'var(--text-bright)', fontWeight: 700 }}>sales@iron-shieldtech.com</p>
                 </div>
               </div>
             </div>
 
-            <div style={{ paddingLeft: '1.5rem', borderLeft: '1px solid var(--border)' }}>
-              <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', fontFamily: 'var(--font-mono)' }}>
-                {t('contact.info.hours')}
-              </p>
-            </div>
+           
           </div>
         </div>
       </div>

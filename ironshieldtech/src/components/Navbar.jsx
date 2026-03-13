@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import Logo from "../assets/Logo/logo.png";
 const Navbar = () => {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -11,20 +13,37 @@ const Navbar = () => {
     i18n.changeLanguage(newLang);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileProductsOpen(false);
+  };
+
+  const categoriesList = [
+    { key: 'tactical-vest', nameKey: 'tactical_vest' },
+    { key: 'backpacks', nameKey: 'bag_backpack' },
+    { key: 'uniforms', nameKey: 'combat_uniforms' },
+    { key: 'helmets', nameKey: 'ballistic_helmet' },
+    { key: 'shields', nameKey: 'bulletproof_shield' },
+    { key: 'visors', nameKey: 'ballistic_visor' },
+    { key: 'ballistic-vests', nameKey: 'ballistic_vest' },
+    { key: 'footwear', nameKey: 'footwear' },
+    { key: 'plates', nameKey: 'plates' }
+  ];
+
   return (
     <nav className="glass" style={{
       position: 'fixed',
       top: 0,
       width: '100%',
       zIndex: 1000,
-      padding: '1rem 0'
+      padding: '0 0'
     }}>
       <div className="container" style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <Link to="/" className="logo" style={{
+        <Link to="/" className="logo" onClick={closeMobileMenu} style={{
           fontSize: '1.5rem',
           fontWeight: 800,
           fontFamily: 'var(--font-heading)',
@@ -34,16 +53,11 @@ const Navbar = () => {
           alignItems: 'center',
           gap: '0.5rem'
         }}>
-          <div style={{
-            width: '24px',
-            height: '24px',
-            background: 'var(--primary)',
-            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
-          }}></div>
-          IRON<span style={{ color: 'var(--text-bright)' }}>SHIELD</span>
+         <img style={{width:"130px",height:"auto"}} src={Logo} alt="" />
         </Link>
 
-        <ul style={{
+        {/* Desktop Menu */}
+        <ul className="hide-mobile" style={{
           display: 'flex',
           gap: '2.5rem',
           listStyle: 'none',
@@ -99,21 +113,15 @@ const Navbar = () => {
                 zIndex: 1001
               }}
             >
-              <li><Link to="/category/tactical-vest" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.tactical_vest')}</Link></li>
-              <li><Link to="/category/backpacks" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.bag_backpack')}</Link></li>
-              <li><Link to="/category/uniforms" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.combat_uniforms')}</Link></li>
-              <li><Link to="/category/helmets" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.ballistic_helmet')}</Link></li>
-              <li><Link to="/category/shields" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.bulletproof_shield')}</Link></li>
-              <li><Link to="/category/visors" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.ballistic_visor')}</Link></li>
-              <li><Link to="/category/ballistic-vests" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.ballistic_vest')}</Link></li>
-              <li><Link to="/category/footwear" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.footwear')}</Link></li>
-              <li><Link to="/category/plates" onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>{t('categories.plates')}</Link></li>
+              {categoriesList.map((cat) => (
+                <li key={cat.key}>
+                  <Link to={`/category/${cat.key}`} onClick={() => setIsProductsOpen(false)} style={{ fontSize: '0.75rem' }}>
+                    {t(`categories.${cat.nameKey}`)}
+                  </Link>
+                </li>
+              ))}
               <div style={{ height: '1px', background: 'var(--border)', margin: '0.5rem 0' }}></div>
-              <li>
-                <div style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', marginBottom: '0.5rem' }}>
-                  // SYSTEM_STATUS: SECURE
-                </div>
-              </li>
+              
             </ul>
           </li>
           <li>
@@ -124,6 +132,7 @@ const Navbar = () => {
         <div className="nav-actions" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           <button 
             onClick={toggleLanguage}
+            className="hide-mobile"
             style={{
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid var(--border)',
@@ -143,10 +152,146 @@ const Navbar = () => {
             color: 'var(--text-bright)',
             fontSize: '1.2rem'
           }}>
-            <i className="ri-search-line"></i>
+          </button>
+
+          {/* Hamburger Toggle */}
+          <button 
+            className="show-mobile"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{
+              background: 'none',
+              color: 'var(--text-bright)',
+              fontSize: '1.4rem',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0.5rem'
+            }}
+          >
+            <i className={isMobileMenuOpen ? "ri-close-line" : "ri-menu-4-line"}></i>
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        {/* Mobile Header */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '1.5rem 2rem',
+          borderBottom: '1px solid var(--border)',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          background: 'var(--bg-dark)'
+        }}>
+          <Link to="/" className="logo" onClick={closeMobileMenu} style={{
+            fontSize: '1.2rem',
+            fontWeight: 800,
+            fontFamily: 'var(--font-heading)',
+            color: 'var(--primary)',
+            letterSpacing: '1px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem'
+          }}>
+            <div style={{
+              width: '18px',
+              height: '18px',
+              background: 'var(--primary)',
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+            }}></div>
+            IRON<span style={{ color: 'var(--text-bright)' }}>SHIELD</span>
+          </Link>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Split Language Switcher */}
+            <div className="mobile-lang-switcher" style={{ display: 'flex', border: '1px solid var(--border)', borderRadius: '2px', overflow: 'hidden' }}>
+              <button 
+                onClick={() => i18n.language !== 'en' && toggleLanguage()}
+                style={{
+                  padding: '0.4rem 0.8rem',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  background: i18n.language === 'en' ? 'var(--primary)' : 'transparent',
+                  color: i18n.language === 'en' ? 'var(--bg-dark)' : 'var(--text-dim)',
+                }}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => i18n.language !== 'fr' && toggleLanguage()}
+                style={{
+                  padding: '0.4rem 0.8rem',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  background: i18n.language === 'fr' ? 'var(--primary)' : 'transparent',
+                  color: i18n.language === 'fr' ? 'var(--bg-dark)' : 'var(--text-dim)',
+                  borderLeft: '1px solid var(--border)'
+                }}
+              >
+                FR
+              </button>
+            </div>
+
+            <button onClick={closeMobileMenu} style={{ background: 'none', color: 'var(--text-bright)', fontSize: '1.8rem' }}>
+              <i className="ri-close-line"></i>
+            </button>
+          </div>
+        </div>
+
+        <div className="mobile-nav-content" style={{ marginTop: '5rem', display: 'flex', flexDirection: 'column' }}>
+          <Link to="/" className="mobile-menu-link" onClick={closeMobileMenu}>
+            {t('nav.home')}
+          </Link>
+          
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <button 
+              onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+              className={`mobile-menu-link ${isMobileProductsOpen ? 'active' : ''}`}
+            >
+              {t('nav.products')}
+              <i className="ri-arrow-down-s-line" style={{ 
+                transform: isMobileProductsOpen ? 'rotate(180deg)' : 'rotate(0)',
+                transition: 'var(--transition-smooth)'
+              }}></i>
+            </button>
+            
+            <div className={`mobile-submenu ${isMobileProductsOpen ? 'open' : ''}`}>
+              {categoriesList.map((cat) => (
+                <Link 
+                  key={cat.key} 
+                  to={`/category/${cat.key}`} 
+                  onClick={closeMobileMenu}
+                  className="mobile-submenu-link"
+                >
+                  {t(`categories.${cat.nameKey}`)}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link to="/contact" className="mobile-menu-link" onClick={closeMobileMenu}>
+            {t('nav.contact')}
+          </Link>
+          
+          <div style={{ marginTop: '3rem' }}>
+            <div style={{ 
+              fontSize: '0.6rem', 
+              color: 'var(--text-dim)', 
+              fontFamily: 'var(--font-mono)',
+              paddingLeft: '1rem',
+              borderLeft: '2px solid var(--primary)',
+              lineHeight: 1.8
+            }}>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
     </nav>
   );
 };

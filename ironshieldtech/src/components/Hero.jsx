@@ -19,7 +19,7 @@ const Hero = () => {
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
-      background: 'linear-gradient(to right, #060705 45%, rgba(0,0,0,0.2) 100%), url("/images/hero-bg.jpg")',
+      background: 'linear-gradient(to right, #060705 30%, rgba(6, 7, 5, 0.5) 65%, rgba(0,0,0,0.3) 100%), url("/images/hero-bg.jpg")',
       backgroundSize: 'cover',
       backgroundPosition: 'center right'
     }}>
@@ -44,25 +44,12 @@ const Hero = () => {
       </div>
 
       <div className="container">
-        <div style={{ maxWidth: '700px' }} className="animate-fade-in">
+        <div style={{ maxWidth: '700px' }} className="animate-fade-in hero-content">
           <header style={{ marginBottom: '2rem' }}>
-            <div className="badge">
-              {t('hero.badge')} // MK-9
-            </div>
-            <p style={{ 
-              color: 'var(--text-dim)', 
-              fontSize: '0.75rem', 
-              letterSpacing: '0.3rem', 
-              textTransform: 'uppercase',
-              marginTop: '1.25rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              {t('hero.subtitle')}
-            </p>
+           
           </header>
 
-          <h1 style={{
-            fontSize: '5.5rem',
+          <h1 className="hero-title" style={{
             lineHeight: '0.9',
             marginBottom: '2rem',
             fontWeight: 800,
@@ -76,51 +63,45 @@ const Hero = () => {
           <div style={{
             borderLeft: '2px solid var(--primary)',
             paddingLeft: '2.5rem',
-            marginBottom: '3.5rem'
-          }}>
+            marginBottom: '3.5rem',
+            marginTop: '2rem'
+          }} className="hero-desc-container">
             <p style={{
               color: 'var(--text-main)',
-              fontSize: '1.25rem',
-              maxWidth: '550px',
+              fontSize: '1.1rem',
+              maxWidth: '650px',
               fontFamily: 'var(--font-body)',
               fontWeight: 300,
               lineHeight: '1.6',
               opacity: 0.85
-            }}>
+            }} className="hero-desc">
               {t('hero.desc')}
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '2rem' }}>
-            <button 
-              onClick={() => scrollToSection('catalogue')}
-              style={{
-                background: 'var(--primary)',
-                color: '#fff',
-                padding: '1.25rem 3.5rem',
-                fontSize: '0.85rem',
-                fontWeight: 800,
-                border: '1px solid var(--primary-bright)',
-                boxShadow: '0 0 40px var(--primary-glow)',
-                clipPath: 'polygon(0 0, 100% 0, 95% 100%, 0% 100%)'
-              }}
-            >
-              {t('hero.btn_catalog')}
-            </button>
-          </div>
+          
+
         </div>
       </div>
 
+      <style>{`
+        .hero-title {
+          font-size: 5.5rem;
+        }
+        @media (max-width: 1024px) {
+          .hero-title { font-size: 4rem; }
+        }
+        @media (max-width: 768px) {
+          .hero-title { font-size: 3rem; }
+          .hero-desc { font-size: 1.1rem !important; }
+          .hero-desc-container { padding-left: 1.5rem !important; }
+          .hero-content { margin-top: 2rem; }
+          .btn-responsive { padding: 1rem 2rem !important; width: 100%; }
+        }
+      `}</style>
+
       {/* Decorative vertical mask */}
-      <div style={{
-        position: 'absolute',
-        bottom: '0',
-        left: '0',
-        width: '100%',
-        height: '300px',
-        background: 'linear-gradient(to top, var(--bg-dark) 20%, transparent)',
-        zIndex: 1
-      }}></div>
+    
     </section>
   );
 };

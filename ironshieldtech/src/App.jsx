@@ -11,10 +11,12 @@ import Footer from './components/Footer';
 import CategoryPage from './components/CategoryPage';
 import CategoryGrid from './components/CategoryGrid';
 import Contact from './components/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="app-wrapper">
+      <ScrollToTop />
       <Navbar />
       <main>
         <Routes>
